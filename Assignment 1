@@ -1,0 +1,154 @@
+# Question 1
+ages = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24]
+ages.sort()
+print('Sorted ages: ', ages)
+min_age=ages[0]
+max_age=ages[-1]
+print('Min age: ', min_age)
+print('Max age: ', max_age)
+ages.append(min_age)
+ages.append(max_age)
+ages.sort()
+print('Ages after adding min and max: ', ages)
+number_of_ages = len(ages)
+if number_of_ages % 2 != 0:
+    median = round(number_of_ages / 2)
+    print('Median of ages: ', ages[median])
+else:
+    median = round(number_of_ages / 2)
+    median = (ages[median] + ages[median - 1]) / 2
+    print('Median of ages: ', median)
+print('Average of ages: ', sum(ages) / number_of_ages)
+print('Range of ages: ', max_age - min_age)
+
+
+# Question 2
+dog=dict()
+dog['name']='Jucy'
+dog['color']='Black'
+dog['breed']='Dobermann'
+dog['legs']='long'
+dog['age']='2'
+print('dog dictionary',dog)
+# first_name,last_name, gender, age, marital_status ,skills, country, city, address
+student={'first_name':'Surya','last_name':'Surya','gender':'male','age':'22','marital status':'single','skills':['python','SQL','Tableau'],'country':'India','city':'Hyderabad','address':'Secunderabad'}
+print(student)
+print('Length of student dictionary',len(student))
+print('The value of skills is',student['skills'])
+print('The data type of skills value is',type(student['skills']))
+student['skills'].append('R')
+student['skills'].append('PostgreSQL')
+print('The updated skills are',student['skills'])
+print('The keys in student dictionary are',list(student.keys()))
+print('The values in student dictionary are',list(student.values()))
+
+# Question 3
+sisters=('Rani','Siri')
+brothers=('Surya','Sai')
+siblings=sisters+brothers
+print('The siblings are',siblings)
+print('The number of siblings are',len(siblings))
+family_members=siblings+('George','Mary')
+print('The family members are',family_members)
+
+# Question 4
+it_companies = {'Facebook', 'Google', 'Microsoft', 'Apple', 'IBM', 'Oracle', 'Amazon'} 
+A ={19, 22, 24, 20, 25, 26}  
+B = {19, 22, 20, 25, 26, 24, 28, 27}  
+age = [22, 19, 24, 25, 26, 24, 25, 24]  
+print('The length of it_companies is',len(it_companies))
+it_companies.add('Twitter')
+print('The updated it_companies are',it_companies)
+it_companies.update(['Deloitte','TCS','Accenture'])
+print('The updated it_companies are',it_companies)
+it_companies.remove('Twitter')
+print('The it_companies after removing Twitter are',it_companies)
+it_companies.discard('Twitter')
+# The difference between remove and discard is that remove will raise an error if the element is not present in the set and discard will not throw an error
+print('The updated it_companies are',it_companies)
+print('The difference between remove and discard is that remove will throw an error if the element is not present in the set and discard will not throw an error')
+print('The union of A and B is',A.union(B))
+print('The intersection of A and B is',A.intersection(B))
+print('A is a subset of B',A.issubset(B))
+print('A and B are disjoint sets',A.isdisjoint(B))
+print('Joining A and B',A.union(B))
+print('Joining B and A',B.union(A))
+print('Symmetric difference of A and B',A.symmetric_difference(B))
+print('Deleting all the elements in A,B,it_companies')
+A.clear()
+B.clear()
+it_companies.clear()
+age_set=set(age)
+print('The length of age list is',len(age))
+print('The length of age set is',len(age_set))
+
+
+# Question 5
+
+radius=30
+area_of_circle=3.14*radius*radius
+print('The area of circle is',area_of_circle)
+circum_of_circle=2*3.14*radius
+print('The circumference of circle is',circum_of_circle)
+radius=int(input('Enter the radius of the circle'))
+area_of_circle=3.14*radius*radius
+print('The area of circle is',area_of_circle)
+
+# Question 6
+
+sentence='I am a teacher and I love to inspire and teach people'
+print('The unique words in the sentence are',set(sentence.split()))
+print('The number of unique words in the sentence are',len(set(sentence.split())))
+
+# Question 7
+"""Use a tab escape sequence to get the following lines.  
+Name Age Country City Asabeneh 250 
+Finland Helsinki
+"""
+print('Name\tAge\tCountry\tCity')
+print('Asabeneh\t250\tFinland\tHelsinki')
+
+# Question 8
+radius = 10  
+area = 3.14 * radius ** 2  
+print("The area of a circle with radius {} is {} meters square.".format(radius,round(area))) 
+
+# Question 9
+"""Write a program, which reads weights (lbs.) of N students into a list and convert these 
+weights to kilograms in a separate list using Loop. N: No of students (Read input from 
+user)  """
+N=int(input('Enter the number of students'))
+weights=[]
+for i in range(N):
+    weight=int(input('Enter the weight of student'))
+    weights.append(weight)
+print('The weights of students are',weights)
+weights_in_kg=[]
+for i in weights:
+    weights_in_kg.append(round(i*0.453592,2))
+print('The weights of students in kg are',weights_in_kg)
+
+
+# Question 10
+"""
+Let the training data points be 1,6,7,10
+Let the testing data points be 2,3,6,11
+Let the two classes be cross and circle
+KNN Classifier Steps
+1. Given K=3
+2. Now we hve to take every single test point and  check which 3 training point is closest to it and assign the class of the majority of the 3 closest points to the test point
+   i) For 2, the 3 closest points are 1,6,7 the majority class is circle so 2 is assigned to circle class
+   ii) For 3, the 3 closest points are 1,6,7 the majority class is circle so 3 is assigned to circle class
+   iii) For 6, the 3 closest points are 6,7,10 the majority class is circle so 6 is assigned to circle class
+   iv) For 11, the 3 closest points are 6,7,10 the majority class is circle so 11 is assigned to circle class
+3. Now we have to calculate the confusion matrix
+    TP=2
+    TN=0
+    FP=2
+    FN=0
+4. The accuracy is calculated as (TP+TN)/(TP+TN+FP+FN)
+    The accuracy is 0.5
+5. The sensitivity is calculated as TP/(TP+FN)
+    The sensitivity is 0
+6. The specificity is calculated as TN/(TN+FP)
+    The specificity is 1
